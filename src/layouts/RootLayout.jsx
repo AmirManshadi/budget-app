@@ -1,9 +1,13 @@
+// rrd imports
 import { Outlet } from "react-router-dom"
+
+// components
+import Navbar from "../components/Navbar"
 
 function RootLayout() {
 	return (
 		<>
-			<div>RootLayout</div>
+			<Navbar />
 			<main>
 				<Outlet />
 			</main>
