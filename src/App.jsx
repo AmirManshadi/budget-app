@@ -6,16 +6,22 @@ import {
 	RouterProvider,
 } from "react-router-dom"
 
-// layout
-import RootLayout from "./layouts/RootLayout"
+// Layout
+import RootLayout, { RootLayoutLoader } from "./layouts/RootLayout"
 
-// pages
+// Pages
 import Dashboard from "./pages/Dashboard"
+
+// Actions
+import { NavbarLogoutAction } from "./components/Navbar"
+import Error404 from "./pages/Error404"
 
 const router = createBrowserRouter(
 	createRoutesFromElements(
-		<Route path="/" element={<RootLayout />} errorElement={<h1>error</h1>}>
+		<Route path="/" element={<RootLayout />} loader={RootLayoutLoader}>
 			<Route index element={<Dashboard />}></Route>
+			<Route path="logout" action={NavbarLogoutAction}></Route>
+      <Route path="*" element={<Error404 />}/>
 		</Route>
 	)
 )
