@@ -11,11 +11,11 @@ import { ToastContainer } from "react-toastify"
 import "react-toastify/dist/ReactToastify.min.css"
 
 // Layout
-import RootLayout, { RootLayoutLoader } from "./layouts/RootLayout"
+import RootLayout, { RootLayoutLoader } from "./components/RootLayout"
 
 // Pages
-import Dashboard from "./pages/Dashboard"
-import Error from "./pages/Error"
+import Dashboard from "./components/Dashboard"
+import Error from "./components/Error"
 
 // Actions
 import { NavbarLogoutAction } from "./components/Navbar"

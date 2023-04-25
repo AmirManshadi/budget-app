@@ -2,7 +2,7 @@
 import { Outlet, useLoaderData } from "react-router-dom"
 
 // Components
-import Navbar from "../components/Navbar"
+import Navbar from "./Navbar"
 
 // Helpers
 import { fetchData } from "../utils/helperFunctions"
