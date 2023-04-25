@@ -27,15 +27,15 @@ export async function NavbarLogoutAction() {
 // eslint-disable-next-line react/prop-types
 function Navbar({ userName }) {
 	return (
-		<nav>
-			<NavLink to="/" className="website-title">
-				<h1>
+		<nav id="navbar">
+			<NavLink to="/">
+				<h1 className="website-title">
 					<HomeIcon width={40} />
-					BudgetApp
+					<span>BudgetApp</span>
 				</h1>
 			</NavLink>
 			{userName && (
-				<Form method="delete" action="/logout">
+				<Form method="delete" action="/logout" className="logout-form">
 					<Button style="danger">Logout</Button>
 				</Form>
 			)}
