@@ -6,6 +6,7 @@ import Navbar from "./Navbar"
 
 // pages
 import Dashboard from "./Dashboard"
+import LoginForm from "./LoginForm"
 
 // Helpers
 import { fetchData } from "../utils/helperFunctions"
@@ -22,7 +23,7 @@ function RootLayout() {
 	return (
 		<>
 			<Navbar userName={userName} />
-			<main>{userName ? <Dashboard /> : <p>login</p>}</main>
+			<main>{userName ? <Dashboard /> : <LoginForm />}</main>
 		</>
 	)
 }
