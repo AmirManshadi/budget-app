@@ -6,7 +6,7 @@ import { ToastContainer } from "react-toastify"
 import "react-toastify/dist/ReactToastify.min.css"
 
 // Layout
-import RootLayout, { RootLayoutLoader } from "./components/RootLayout"
+import Main, { MainLoader } from "./components/Main"
 
 // Pages
 import Error from "./components/Error"
@@ -17,8 +17,8 @@ import { NavbarLogoutAction } from "./components/Navbar"
 const router = createBrowserRouter([
 	{
 		path: "/",
-		element: <RootLayout />,
-		loader: RootLayoutLoader,
+		element: <Main />,
+		loader: MainLoader,
 		errorElement: <Error />,
 		children: [
 			{

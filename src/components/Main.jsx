@@ -12,12 +12,12 @@ import LoginForm from "./LoginForm"
 import { fetchData } from "../utils/helperFunctions"
 
 // Loader
-export function RootLayoutLoader() {
+export function MainLoader() {
 	const userName = fetchData("userName")
 	return { userName }
 }
 
-function RootLayout() {
+function Main() {
 	const { userName } = useLoaderData()
 
 	return (
@@ -27,4 +27,4 @@ function RootLayout() {
 		</>
 	)
 }
-export default RootLayout
+export default Main
