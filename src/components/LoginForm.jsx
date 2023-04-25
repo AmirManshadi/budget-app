@@ -26,7 +26,8 @@ function LoginForm() {
 						aria-label="Your Name"
 						autoComplete="given-name"
 					/>
-					<button>
+					<input type="hidden" name="_action" value="newUser" />
+					<button type="submit">
 						<span>Create Account</span>
 						<UserPlusIcon width={20} />
 					</button>

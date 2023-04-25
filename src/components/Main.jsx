@@ -9,12 +9,28 @@ import Dashboard from "./Dashboard"
 import LoginForm from "./LoginForm"
 
 // Helpers
-import { fetchData } from "../utils/helperFunctions"
+import { fetchData, toaster } from "../utils/helperFunctions"
 
 // Loader
 export function MainLoader() {
 	const userName = fetchData("userName")
 	return { userName }
+}
+
+// action
+export async function MainAction({ request }) {
+	const formData = await request.formData()
+	const { _action, ...data } = Object.fromEntries(formData)
+	switch (_action) {
+		case "newUser":
+			localStorage.setItem("userName", data.userName)
+			toaster("success", `Hello ${data.userName}`)
+			break
+
+		default:
+			break
+	}
+	return null
 }
 
 function Main() {
