@@ -22,7 +22,12 @@ import { NavbarLogoutAction } from "./components/Navbar"
 
 const router = createBrowserRouter(
 	createRoutesFromElements(
-		<Route path="/" element={<RootLayout />} loader={RootLayoutLoader} errorElement={<Error />}>
+		<Route
+			path="/"
+			element={<RootLayout />}
+			loader={RootLayoutLoader}
+			errorElement={<Error />}
+		>
 			<Route index element={<Dashboard />}></Route>
 			<Route path="logout" action={NavbarLogoutAction}></Route>
 		</Route>

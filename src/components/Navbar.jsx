@@ -1,18 +1,26 @@
 // rrd imports
 import { Form, NavLink, redirect } from "react-router-dom"
 
-// libraries
+// library
 import { HomeIcon } from "@heroicons/react/24/outline"
 
 // Components
 import Button from "./Button"
 
 // Helpers
-import { deleteData } from "../utils/helperFunctions"
+import { deleteData, toaster } from "../utils/helperFunctions"
 
 // Action
 export async function NavbarLogoutAction() {
-	deleteData("userName")
+	if (confirm("Do you want to Log out?")) {
+		try {
+			deleteData("userName")
+			toaster("success", "Successfully logged out")
+		} catch (e) {
+			toaster("error", "Failed to log out")
+			throw new Error("Failed to delete user")
+		}
+	}
 	return redirect("/")
 }
 

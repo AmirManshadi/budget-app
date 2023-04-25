@@ -1,19 +1,22 @@
 // Libraries
 import { toast } from "react-toastify"
 
+// add to local storage
 export function fetchData(key) {
-	const result = localStorage.getItem(key)
-	return result
+	return localStorage.getItem(key)
 }
 
+// remove from local storage
 export function deleteData(key) {
-	if (confirm("Do you want to Log out?")) {
-		localStorage.removeItem(key)
-	}
-	return toast.success("You have successfully logged out.", {
+	return localStorage.removeItem(key)
+}
+
+// toast api
+export function toaster(type, message) {
+	return toast[type](message, {
 		position: "bottom-left",
 		autoClose: 3000,
-		hideProgressBar: false,
+		hideProgressBar: true,
 		closeOnClick: true,
 		pauseOnHover: true,
 		draggable: true,
