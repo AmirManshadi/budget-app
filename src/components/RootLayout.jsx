@@ -1,8 +1,11 @@
 // rrd imports
-import { Outlet, useLoaderData } from "react-router-dom"
+import { useLoaderData } from "react-router-dom"
 
 // Components
 import Navbar from "./Navbar"
+
+// pages
+import Dashboard from "./Dashboard"
 
 // Helpers
 import { fetchData } from "../utils/helperFunctions"
@@ -19,9 +22,7 @@ function RootLayout() {
 	return (
 		<>
 			<Navbar userName={userName} />
-			<main>
-				<Outlet />
-			</main>
+			<main>{userName ? <Dashboard /> : <p>login</p>}</main>
 		</>
 	)
 }

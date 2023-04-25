@@ -14,7 +14,6 @@ import "react-toastify/dist/ReactToastify.min.css"
 import RootLayout, { RootLayoutLoader } from "./components/RootLayout"
 
 // Pages
-import Dashboard from "./components/Dashboard"
 import Error from "./components/Error"
 
 // Actions
@@ -28,7 +27,6 @@ const router = createBrowserRouter(
 			loader={RootLayoutLoader}
 			errorElement={<Error />}
 		>
-			<Route index element={<Dashboard />}></Route>
 			<Route path="logout" action={NavbarLogoutAction}></Route>
 		</Route>
 	)
