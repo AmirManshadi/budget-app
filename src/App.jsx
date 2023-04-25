@@ -1,8 +1,6 @@
 // rrd imports
 import {
 	createBrowserRouter,
-	createRoutesFromElements,
-	Route,
 	RouterProvider,
 } from "react-router-dom"
 
@@ -20,16 +18,20 @@ import Error from "./components/Error"
 import { NavbarLogoutAction } from "./components/Navbar"
 
 const router = createBrowserRouter(
-	createRoutesFromElements(
-		<Route
-			path="/"
-			element={<RootLayout />}
-			loader={RootLayoutLoader}
-			errorElement={<Error />}
-		>
-			<Route path="logout" action={NavbarLogoutAction}></Route>
-		</Route>
-	)
+	[
+		{
+			path: "/",
+			element: <RootLayout />,
+			loader: RootLayoutLoader,
+			errorElement: <Error />,
+			children: [
+				{
+					path: "logout",
+					action: NavbarLogoutAction,
+				},
+			],
+		},
+	]
 )
 
 function App() {
