@@ -2,7 +2,7 @@
 import { Link, useNavigate, useRouteError } from "react-router-dom"
 
 // library
-import { ArrowUturnLeftIcon } from "@heroicons/react/24/outline"
+import { ArrowUturnLeftIcon, HomeIcon } from "@heroicons/react/24/outline"
 
 function Error() {
 	const error = useRouteError()
@@ -16,7 +16,10 @@ function Error() {
 					<span>Go Back</span>
 					<ArrowUturnLeftIcon width={20} />
 				</button>
-				<Link to="/">Home Page</Link>
+				<Link to="/">
+					<span>Home Page</span>
+					<HomeIcon width={20} />
+				</Link>
 			</div>
 		</>
 	)
