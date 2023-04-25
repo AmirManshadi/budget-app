@@ -1,8 +1,5 @@
 // rrd imports
-import {
-	createBrowserRouter,
-	RouterProvider,
-} from "react-router-dom"
+import { createBrowserRouter, RouterProvider } from "react-router-dom"
 
 // Libraries
 import { ToastContainer } from "react-toastify"
@@ -17,22 +14,20 @@ import Error from "./components/Error"
 // Actions
 import { NavbarLogoutAction } from "./components/Navbar"
 
-const router = createBrowserRouter(
-	[
-		{
-			path: "/",
-			element: <RootLayout />,
-			loader: RootLayoutLoader,
-			errorElement: <Error />,
-			children: [
-				{
-					path: "logout",
-					action: NavbarLogoutAction,
-				},
-			],
-		},
-	]
-)
+const router = createBrowserRouter([
+	{
+		path: "/",
+		element: <RootLayout />,
+		loader: RootLayoutLoader,
+		errorElement: <Error />,
+		children: [
+			{
+				path: "logout",
+				action: NavbarLogoutAction,
+			},
+		],
+	},
+])
 
 function App() {
 	return (
