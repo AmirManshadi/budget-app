@@ -15,17 +15,16 @@ import RootLayout, { RootLayoutLoader } from "./layouts/RootLayout"
 
 // Pages
 import Dashboard from "./pages/Dashboard"
-import Error404 from "./pages/Error404"
+import Error from "./pages/Error"
 
 // Actions
 import { NavbarLogoutAction } from "./components/Navbar"
 
 const router = createBrowserRouter(
 	createRoutesFromElements(
-		<Route path="/" element={<RootLayout />} loader={RootLayoutLoader}>
+		<Route path="/" element={<RootLayout />} loader={RootLayoutLoader} errorElement={<Error />}>
 			<Route index element={<Dashboard />}></Route>
 			<Route path="logout" action={NavbarLogoutAction}></Route>
-			<Route path="*" element={<Error404 />} />
 		</Route>
 	)
 )
