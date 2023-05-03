@@ -9,7 +9,7 @@ import illustration from "../assets/landing_page_illustration.svg"
 
 function LoginForm() {
 	return (
-		<>
+		<div className="login-form">
 			<section>
 				<h2>
 					Take Control of <span>Your Money</span>
@@ -36,7 +36,7 @@ function LoginForm() {
 			<figure>
 				<img src={illustration} alt="A man and a woman with shopping bags" />
 			</figure>
-		</>
+		</div>
 	)
 }
 export default LoginForm

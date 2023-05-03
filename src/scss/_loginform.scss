@@ -1,0 +1,57 @@
+.login-form {
+	height: 80dvh;
+	@include flex(row, center, center, 1rem, wrap);
+
+	section {
+		@include flex(column, center, stretch, 0.5rem);
+		h2 {
+			font-size: $font-size-lg;
+			span {
+				color: $accent-color;
+			}
+		}
+
+		p {
+			font-size: $font-size-md;
+		}
+
+		form {
+			@include flex(row, flex-start, stretch, 1rem, wrap);
+			gap: 1rem;
+
+			input,
+			button {
+				border: $border-sm;
+				border-radius: $border-radius-md;
+				padding: 0.5rem 1rem;
+			}
+
+			input {
+				font-size: $font-size-md;
+				font-weight: bold;
+				flex-grow: 1;
+				&:focus {
+					outline: 1px solid $accent-color;
+				}
+				&::placeholder {
+					font-size: inherit;
+				}
+			}
+
+			button {
+				@extend %btn-dark;
+				@include flex(row, center, center, 0.5rem);
+				&:hover {
+					background-color: $dark-color-hover;
+				}
+			}
+		}
+	}
+
+	figure {
+		img {
+			width: 100%;
+			display: block;
+		}
+	}
+}
