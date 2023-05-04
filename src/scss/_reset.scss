@@ -81,6 +81,10 @@ $page-inline-padding: clamp(1rem, 2vw, 2rem);
 }
 
 // reset
+:root {
+	--toastify-icon-color-success: #6c63ff;
+}
+
 *,
 *::after,
 *::before {
