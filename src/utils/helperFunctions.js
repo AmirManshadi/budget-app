@@ -19,7 +19,7 @@ export function createBudget({ name, amount }) {
 		amount: +amount,
 		createdAt: Date.now(),
 	}
-	const existingBudgets = fetchData("budgets") ?? []
+	const existingBudgets = fetchData("budgets") ?? "[]"
 	return localStorage.setItem(
 		"budgets",
 		JSON.stringify([...JSON.parse(existingBudgets), newBudget])
