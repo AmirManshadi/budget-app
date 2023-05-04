@@ -23,15 +23,18 @@ export async function MainAction({ request }) {
 	const formData = await request.formData()
 	const { _action, ...data } = Object.fromEntries(formData)
 	switch (_action) {
-    // create user
+		// create user
 		case "newUser":
 			localStorage.setItem("userName", data.userName)
 			toaster("success", `Hello ${data.userName}`)
 			break
-      
-    // create new budget
+
+		// create new budget
 		case "newBudget":
-			createBudget({ name: data.newBudgetName, amount: data.newBudgetAmount })
+			createBudget({
+				name: data.newBudgetName,
+				amount: data.newBudgetAmount,
+			})
 			toaster("success", "budget created")
 			break
 
