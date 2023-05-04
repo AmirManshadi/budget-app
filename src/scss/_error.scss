@@ -1,0 +1,28 @@
+.error {
+  background: url($assets-background) no-repeat center / 80%;
+	@include flex(column, center, center, 1rem);
+	height: 100dvh;
+	text-align: center;
+
+	h1 {
+		font-size: $font-size-lg;
+	}
+	p {
+		font-size: $font-size-md;
+	}
+
+	& > div {
+		@include flex(row, center, center, 1rem);
+		.home-button,
+		.back-button {
+			@include flex(row, center, center, 0.5rem);
+		}
+
+		.home-button {
+			@extend %btn-dark;
+		}
+		.back-button {
+			@extend %btn-shadow;
+		}
+	}
+}
