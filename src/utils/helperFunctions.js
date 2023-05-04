@@ -11,6 +11,21 @@ export function deleteData(key) {
 	return localStorage.removeItem(key)
 }
 
+// add new budget to existing budgets in local storage
+export function createBudget({ name, amount }) {
+	const newBudget = {
+		id: crypto.randomUUID(),
+		name: name,
+		amount: +amount,
+		createdAt: Date.now(),
+	}
+	const existingBudgets = fetchData("budgets") ?? []
+	return localStorage.setItem(
+		"budgets",
+		JSON.stringify([...JSON.parse(existingBudgets), newBudget])
+	)
+}
+
 // toast api
 export function toaster(type, message) {
 	return toast[type](message, {
