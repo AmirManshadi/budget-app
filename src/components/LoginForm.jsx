@@ -38,6 +38,7 @@ function LoginForm() {
 						placeholder="what is your name?"
 						aria-label="Your Name"
 						autoComplete="given-name"
+            autoFocus
 						onChange={checkInputLength}
 					/>
 					<input type="hidden" name="_action" value="newUser" />
