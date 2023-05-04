@@ -1,3 +1,6 @@
+// react import
+import { useState } from "react"
+
 // rrd import
 import { Form } from "react-router-dom"
 
@@ -8,6 +11,16 @@ import { UserPlusIcon } from "@heroicons/react/24/outline"
 import illustration from "../assets/landing_page_illustration.svg"
 
 function LoginForm() {
+	const [isButtonDisabled, setIsButtonDisabled] = useState(true)
+
+	function checkInputLength(e) {
+		if (e.target.value.length > 0) {
+			setIsButtonDisabled(false)
+		} else {
+			setIsButtonDisabled(true)
+		}
+	}
+
 	return (
 		<div className="login-form">
 			<section>
@@ -25,9 +38,10 @@ function LoginForm() {
 						placeholder="what is your name?"
 						aria-label="Your Name"
 						autoComplete="given-name"
+						onChange={checkInputLength}
 					/>
 					<input type="hidden" name="_action" value="newUser" />
-					<button type="submit">
+					<button type="submit" disabled={isButtonDisabled}>
 						<span>Create Account</span>
 						<UserPlusIcon width={20} />
 					</button>
