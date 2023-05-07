@@ -1,11 +1,26 @@
+// react import
+import { useEffect, useRef } from "react"
+
 // rrd import
-import { Form } from "react-router-dom"
+import { useFetcher } from "react-router-dom"
 
 // library
 import { CurrencyDollarIcon } from "@heroicons/react/24/outline"
 
 // eslint-disable-next-line react/prop-types
 function Dashboard({ userName /* budgets */ }) {
+	const fetcher = useFetcher()
+	const isSubmitting = fetcher.state === "submitting"
+	const formRef = useRef()
+	const focusRef = useRef()
+
+	useEffect(() => {
+		if (!isSubmitting) {
+			formRef.current.reset()
+			focusRef.current.focus()
+		}
+	}, [isSubmitting])
+
 	return (
 		<div className="dashboard">
 			<h2>
@@ -15,7 +30,7 @@ function Dashboard({ userName /* budgets */ }) {
 			<section>
 				<div className="new-budget-form">
 					<h3>create budget</h3>
-					<Form method="post">
+					<fetcher.Form method="post" ref={formRef}>
 						<div>
 							<label htmlFor="newBudget">budget name</label>
 							<input
@@ -23,6 +38,7 @@ function Dashboard({ userName /* budgets */ }) {
 								name="newBudgetName"
 								id="newBudgetName"
 								placeholder="e.g Groceries"
+								ref={focusRef}
 								required
 							/>
 						</div>
@@ -39,11 +55,17 @@ function Dashboard({ userName /* budgets */ }) {
 							/>
 						</div>
 						<input type="hidden" name="_action" value="newBudget" />
-						<button type="submit">
-							<span>create budget</span>
-							<CurrencyDollarIcon width={20} />
+						<button type="submit" disabled={isSubmitting}>
+							{isSubmitting ? (
+								<span>submitting budget...</span>
+							) : (
+								<>
+									<span>create budget</span>
+									<CurrencyDollarIcon width={20} />
+								</>
+							)}
 						</button>
-					</Form>
+					</fetcher.Form>
 				</div>
 			</section>
 		</div>
