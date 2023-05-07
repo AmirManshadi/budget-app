@@ -1,4 +1,8 @@
+// rrd import
 import { Form } from "react-router-dom"
+
+// library
+import { CurrencyDollarIcon } from "@heroicons/react/24/outline"
 
 // eslint-disable-next-line react/prop-types
 function Dashboard({ userName /* budgets */ }) {
@@ -35,7 +39,10 @@ function Dashboard({ userName /* budgets */ }) {
 							/>
 						</div>
 						<input type="hidden" name="_action" value="newBudget" />
-						<button type="submit">create budget</button>
+						<button type="submit">
+							<span>create budget</span>
+							<CurrencyDollarIcon width={20} />
+						</button>
 					</Form>
 				</div>
 			</section>
