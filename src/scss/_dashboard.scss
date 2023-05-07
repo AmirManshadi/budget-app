@@ -41,7 +41,15 @@
 					font-weight: bold;
 				}
 				button {
+					@include flex(row, center, center, 0.5rem);
 					@extend %btn-accent;
+
+					&:hover {
+						background-color: $accent-color-hover;
+					}
+					&:disabled {
+						background-color: $disabled-color;
+					}
 				}
 			}
 		}
