@@ -27,7 +27,7 @@ function Dashboard({ userName /* budgets */ }) {
 				welcome to your dashboard, <span>{userName}</span>
 			</h2>
 
-			<section>
+			<section id="expense-form">
 				<div className="new-budget-form">
 					<h3>create budget</h3>
 					<fetcher.Form method="post" ref={formRef}>
