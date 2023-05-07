@@ -9,7 +9,12 @@ import Dashboard from "./Dashboard"
 import LoginForm from "./LoginForm"
 
 // Helpers
-import { createBudget, fetchData, toaster } from "../utils/helperFunctions"
+import {
+	createBudget,
+	fetchData,
+	toaster,
+	waait,
+} from "../utils/helperFunctions"
 
 // Loader
 export function MainLoader() {
@@ -20,6 +25,7 @@ export function MainLoader() {
 
 // action
 export async function MainAction({ request }) {
+	await waait()
 	const formData = await request.formData()
 	const { _action, ...data } = Object.fromEntries(formData)
 	switch (_action) {

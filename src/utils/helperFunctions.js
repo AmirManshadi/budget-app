@@ -1,6 +1,11 @@
 // Libraries
 import { toast } from "react-toastify"
 
+// development functions
+export function waait() {
+	return new Promise(res => setTimeout(res, Math.random() * 1000))
+}
+
 // add to local storage
 export function fetchData(key) {
 	return localStorage.getItem(key)
