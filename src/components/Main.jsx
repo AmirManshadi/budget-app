@@ -58,7 +58,7 @@ function Main() {
 			<Navbar userName={userName} />
 			<main>
 				{userName ? (
-					<Dashboard userName={userName} budgets={budgets} />
+					<Dashboard userName={userName} budgets={JSON.parse(budgets)} />
 				) : (
 					<LoginForm />
 				)}
