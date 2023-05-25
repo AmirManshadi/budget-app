@@ -11,6 +11,7 @@ import LoginForm from "./LoginForm"
 // Helpers
 import {
 	createBudget,
+	createExpense,
 	fetchData,
 	toaster,
 	waait,
@@ -44,6 +45,15 @@ export async function MainAction({ request }) {
 			toaster("success", "budget created")
 			break
 
+		// create new expense
+		case "newExpense":
+			createExpense({
+				name: data.newExpenseName,
+				amount: data.newExpenseAmount,
+        budgetID: data.budget
+			})
+			toaster("success", "Expense created")
+			break
 		default:
 			break
 	}

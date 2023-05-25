@@ -31,6 +31,22 @@ export function createBudget({ name, amount }) {
 	)
 }
 
+// add new budget to existing budgets in local storage
+export function createExpense({ name, amount, budgetID }) {
+	const newExpense = {
+		id: crypto.randomUUID(),
+		name: name,
+		amount: +amount,
+		createdAt: Date.now(),
+    budgetID: budgetID,
+	}
+	const existingExpenses = fetchData("Expenses") ?? "[]"
+	return localStorage.setItem(
+		"Expenses",
+		JSON.stringify([...JSON.parse(existingExpenses), newExpense])
+	)
+}
+
 // toast api
 export function toaster(type, message) {
 	return toast[type](message, {
