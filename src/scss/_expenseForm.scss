@@ -1,0 +1,26 @@
+.new-expense-form {
+	form > div:last-child {
+		display: flex;
+		flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    > div , > button {
+      flex-grow: 1;
+    }
+		.budget-category {
+			display: flex;
+			flex-direction: row;
+      align-items: center;
+		}
+	}
+	select {
+		border: $border-sm;
+		border-radius: $border-radius-sm;
+		font-size: $font-size-sm;
+		padding: 0.5rem;
+    flex-grow: 1;
+		&:focus-visible {
+			outline: $outline-focus;
+		}
+	}
+}
