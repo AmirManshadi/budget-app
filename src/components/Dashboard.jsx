@@ -6,11 +6,10 @@
 
 // components
 import BudgetForm from "./BudgetForm"
+import ExpenseForm from "./ExpenseForm"
 
 // eslint-disable-next-line react/prop-types
-function Dashboard({ userName /* budgets */ }) {
-	
-
+function Dashboard({ userName, budgets }) {
 	return (
 		<div className="dashboard">
 			<h2>
@@ -19,6 +18,7 @@ function Dashboard({ userName /* budgets */ }) {
 
 			<section id="dashboard-forms">
 				<BudgetForm />
+				<ExpenseForm budgets={budgets} />
 			</section>
 		</div>
 	)
