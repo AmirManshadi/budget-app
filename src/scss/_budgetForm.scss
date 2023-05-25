@@ -1,0 +1,43 @@
+.new-budget-form {
+	border: $border-dashed-md;
+	border-radius: $border-radius-lg;
+	padding: 1rem;
+
+	h3 {
+		font-size: $font-size-md;
+		color: $accent-color;
+		text-align: center;
+		text-transform: capitalize;
+		margin: 0 0 1rem;
+	}
+
+	form {
+		@include flex(column, flex-start, stretch, 1rem);
+		div {
+			@include flex(column, flex-start, stretch, 0.5rem);
+		}
+		input {
+			border: $border-sm;
+			border-radius: $border-radius-sm;
+			font-size: $font-size-sm;
+			padding: 0.5rem;
+			&:focus-visible {
+				outline: $outline-focus;
+			}
+		}
+		label {
+			font-weight: bold;
+		}
+		button {
+			@include flex(row, center, center, 0.5rem);
+			@extend %btn-accent;
+
+			&:hover {
+				background-color: $accent-color-hover;
+			}
+			&:disabled {
+				background-color: $disabled-color;
+			}
+		}
+	}
+}
