@@ -52,11 +52,13 @@ export default function ExpenseForm({ budgets }) {
 						<div className="budget-category">
 							<label htmlFor="budget">budget category</label>
 							<select name="budget" id="budget" ref={selectRef}>
-								{budgets.map(budget => (
-									<option key={budget.id} value={budget.id}>
-										{budget.name}
-									</option>
-								))}
+								{budgets
+									.sort((b1, b2) => b1.createdAt - b2.createdAt)
+									.map(budget => (
+										<option key={budget.id} value={budget.id}>
+											{budget.name}
+										</option>
+									))}
 							</select>
 						</div>
 					) : null}
