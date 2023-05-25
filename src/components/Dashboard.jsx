@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 // react import
 // import { useEffect, useRef } from "react"
 
@@ -18,7 +19,7 @@ function Dashboard({ userName, budgets }) {
 
 			<section id="dashboard-forms">
 				<BudgetForm />
-				<ExpenseForm budgets={budgets} />
+				{budgets?.length > 0 && <ExpenseForm budgets={budgets} />}
 			</section>
 		</div>
 	)
