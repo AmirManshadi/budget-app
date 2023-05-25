@@ -44,7 +44,6 @@ export default function ExpenseForm({ budgets }) {
 						placeholder="e.g 3.50"
 						step="0.01"
 						inputMode="decimal"
-						ref={focusRef}
 						required
 					/>
 				</div>
