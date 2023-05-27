@@ -79,7 +79,9 @@ export function formatPercentage(number) {
 
 // getting total spent
 export function getExpenseOfBudget(id) {
-	const expenses = JSON.parse(fetchData("expenses"))
+	const expenses = (
+		"expenses" in localStorage ? JSON.parse(fetchData("expenses")) : []
+	)
 		.filter(exp => exp.budgetID === id)
 		.map(exp => exp.amount)
 	return expenses.length > 0
