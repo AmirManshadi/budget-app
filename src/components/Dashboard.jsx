@@ -1,3 +1,5 @@
+/* eslint-disable no-mixed-spaces-and-tabs */
+/* eslint-disable react/jsx-key */
 /* eslint-disable react/prop-types */
 // react import
 // import { useEffect, useRef } from "react"
@@ -6,6 +8,7 @@
 // import { useFetcher } from "react-router-dom"
 
 // components
+import Budget from "./Budget"
 import BudgetForm from "./BudgetForm"
 import ExpenseForm from "./ExpenseForm"
 
@@ -20,6 +23,13 @@ function Dashboard({ userName, budgets }) {
 			<section id="dashboard-forms">
 				<BudgetForm />
 				{budgets?.length > 0 && <ExpenseForm budgets={budgets} />}
+			</section>
+			<section id="budgets-section">
+				{budgets
+					? budgets.map(budget => {
+							return <Budget key={budget.id} budget={{ ...budget }} />
+					  })
+					: null}
 			</section>
 		</div>
 	)
