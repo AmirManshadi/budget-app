@@ -24,7 +24,7 @@ function Dashboard({ userName, budgets }) {
 				{budgets?.length > 0 && <ExpenseForm budgets={budgets} />}
 			</section>
 			<section id="budgets-section">
-				{budgets
+				{budgets.length > 0
 					? budgets.map(budget => {
 							return <Budget key={budget.id} budget={{ ...budget }} />
 					  })
