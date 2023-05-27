@@ -12,7 +12,6 @@ import Budget from "./Budget"
 import BudgetForm from "./BudgetForm"
 import ExpenseForm from "./ExpenseForm"
 
-// eslint-disable-next-line react/prop-types
 function Dashboard({ userName, budgets }) {
 	return (
 		<div className="dashboard">
