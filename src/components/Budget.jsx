@@ -8,7 +8,7 @@ import {
 /* eslint-disable react/prop-types */
 export default function Budget({ budget }) {
 	const { name, id, amount } = budget
-  const spentAmount = getExpenseOfBudget(id)
+	const spentAmount = getExpenseOfBudget(id)
 	return (
 		<div className="budget-card">
 			<div className="budget-info">
@@ -21,10 +21,12 @@ export default function Budget({ budget }) {
 				</progress>
 			</div>
 			<div>
-				<small className="budget-spent">
-					{formatCurrency(spentAmount)}
-				</small>
-				<small className="budget-total">{formatCurrency(amount)}</small>
+				<span className="budget-spent">
+					<small>{formatCurrency(spentAmount)}</small> spent
+				</span>
+				<span className="budget-total">
+					<small>{formatCurrency(amount)}</small>
+				</span>
 			</div>
 		</div>
 	)
