@@ -38,11 +38,11 @@ export function createExpense({ name, amount, budgetID }) {
 		name: name,
 		amount: +amount,
 		createdAt: Date.now(),
-    budgetID: budgetID,
+		budgetID: budgetID,
 	}
-	const existingExpenses = fetchData("Expenses") ?? "[]"
+	const existingExpenses = fetchData("expenses") ?? "[]"
 	return localStorage.setItem(
-		"Expenses",
+		"expenses",
 		JSON.stringify([...JSON.parse(existingExpenses), newExpense])
 	)
 }
@@ -59,4 +59,30 @@ export function toaster(type, message) {
 		progress: undefined,
 		theme: "light",
 	})
+}
+
+// formatting
+export function formatCurrency(amount) {
+	return amount.toLocaleString(undefined, {
+		style: "currency",
+		currency: "USD",
+	})
+}
+
+export function formatPercentage(number) {
+	return number.toLocaleString(undefined, {
+		style: "percent",
+		minimumFractionDigits: 2,
+		maximumFractionDigits: 2,
+	})
+}
+
+// getting total spent
+export function getExpenseOfBudget(id) {
+	const expenses = JSON.parse(fetchData("expenses"))
+		.filter(exp => exp.budgetID === id)
+		.map(exp => exp.amount)
+	return expenses.length > 0
+		? expenses.reduce((acc, amount) => acc + amount, 0)
+		: 0
 }
