@@ -5,14 +5,16 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom"
 import { ToastContainer } from "react-toastify"
 import "react-toastify/dist/ReactToastify.min.css"
 
-// Layout
-import Main, { MainAction, MainLoader } from "./components/Main"
+import Main, { MainLoader } from "./components/Main"
 
-// Pages
 import Error from "./components/Error"
 
-// Actions
 import { NavbarLogoutAction } from "./components/Navbar"
+import Dashboard, {
+	DashboardAction,
+	DashboardLoader,
+} from "./components/Dashboard"
+import Expenses, { ExpensesLoader } from "./components/Expenses"
 
 const router = createBrowserRouter([
 	{
@@ -20,11 +22,21 @@ const router = createBrowserRouter([
 		element: <Main />,
 		loader: MainLoader,
 		errorElement: <Error />,
-		action: MainAction,
 		children: [
+			{
+				index: true,
+				element: <Dashboard />,
+				action: DashboardAction,
+				loader: DashboardLoader,
+			},
 			{
 				path: "logout",
 				action: NavbarLogoutAction,
+			},
+			{
+				path: "expenses",
+				element: <Expenses />,
+				loader: ExpensesLoader,
 			},
 		],
 	},

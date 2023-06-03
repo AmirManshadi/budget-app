@@ -1,47 +1,73 @@
-// react import
-// import { useEffect, useRef } from "react"
+import { useLoaderData } from "react-router-dom"
+import {
+	createBudget,
+	createExpense,
+	fetchData,
+	toaster,
+	waait,
+} from "../utils/helperFunctions"
+import Intro from "./Intro"
+import LoginForm from "./LoginForm"
 
-// rrd import
-import { Link } from "react-router-dom"
+// Loader
+export function DashboardLoader() {
+	const userName = fetchData("userName")
+	const budgets = fetchData("budgets")
+	const expenses = fetchData("expenses")
+	return { userName, budgets, expenses }
+}
 
-// components
-import Budget from "./Budget"
-import BudgetForm from "./BudgetForm"
-import ExpenseForm from "./ExpenseForm"
-import Table from "./Table"
+// action
+export async function DashboardAction({ request }) {
+	await waait()
+	const formData = await request.formData()
+	const { _action, ...data } = Object.fromEntries(formData)
+	switch (_action) {
+		// create user
+		case "newUser":
+			localStorage.setItem("userName", data.userName)
+			toaster("success", `Hello ${data.userName}`)
+			break
 
-function Dashboard({ userName, budgets, expenses }) {
+		// create new budget
+		case "newBudget":
+			createBudget({
+				name: data.newBudgetName,
+				amount: data.newBudgetAmount,
+			})
+			toaster("success", "budget created")
+			break
+
+		// create new expense
+		case "newExpense":
+			createExpense({
+				name: data.newExpenseName,
+				amount: data.newExpenseAmount,
+				budgetID: data.budget,
+			})
+			toaster("success", "Expense created")
+			break
+		default:
+			break
+	}
+	return null
+}
+
+function Dashboard() {
+	const { userName, budgets, expenses } = useLoaderData()
+
 	return (
-		<div className="dashboard">
-			<h2>
-				welcome to your dashboard, <span>{userName}</span>
-			</h2>
-
-			<section id="dashboard-forms">
-				<BudgetForm />
-				{budgets?.length > 0 && <ExpenseForm budgets={budgets} />}
-			</section>
-			<section id="budgets-section">
-				{budgets?.length > 0
-					? budgets.map(budget => {
-							return <Budget key={budget.id} budget={{ ...budget }} />
-					  })
-					: null}
-			</section>
-			<section id="expenses-section">
-				<h2>Recent Expenses</h2>
-				{expenses && expenses.length > 0 && (
-					<Table
-						expenses={expenses
-							.sort((a, b) => b.createdAt - a.createdAt)
-							.slice(0, 8)}
-					/>
-				)}
-				{expenses && expenses.length > 8 && (
-					<Link to="expenses">Show All Expenses</Link>
-				)}
-			</section>
-		</div>
+		<>
+			{userName ? (
+				<Intro
+					userName={userName}
+					budgets={JSON.parse(budgets)}
+					expenses={JSON.parse(expenses)}
+				/>
+			) : (
+				<LoginForm />
+			)}
+		</>
 	)
 }
 export default Dashboard
