@@ -13,13 +13,13 @@ export function ExpensesLoader() {
 }
 
 export default function Expenses() {
-	const expenses = useLoaderData()
+	const { expenses } = useLoaderData()
 	return (
 		<div>
 			<h2>
-				Your Expenses <small>({expenses.length} total)</small>
+				Your Expenses <small>({JSON.parse(expenses).length} total)</small>
 			</h2>
-			<Table expenses={expenses} />
+			<Table expenses={JSON.parse(expenses)} />
 		</div>
 	)
 }
