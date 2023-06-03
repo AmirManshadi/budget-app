@@ -77,6 +77,10 @@ export function formatPercentage(number) {
 	})
 }
 
+export function formatDateToLocaleString(epoch) {
+	return new Date(epoch).toLocaleDateString()
+}
+
 // getting total spent
 export function getExpenseOfBudget(id) {
 	const expenses = (
