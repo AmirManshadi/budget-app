@@ -11,10 +11,12 @@ import Button from "./Button"
 import { deleteData, toaster } from "../utils/helperFunctions"
 
 // Action
-export async function NavbarLogoutAction() {
+export function NavbarLogoutAction() {
 	if (confirm("Do you want to Log out?")) {
 		try {
 			deleteData("userName")
+			deleteData("budgets")
+			deleteData("expenses")
 			toaster("success", "Successfully logged out")
 		} catch (e) {
 			toaster("error", "Failed to log out")
