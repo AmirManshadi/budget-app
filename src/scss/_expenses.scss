@@ -1,0 +1,38 @@
+#expenses-section {
+	margin: 2rem 0;
+	h2 {
+		margin-bottom: 1rem;
+	}
+
+	a[href="/expenses"] {
+		@extend %btn-dark;
+		display: inline-block;
+		margin-top: 1rem;
+	}
+}
+
+.expenses-table {
+	border-collapse: collapse;
+	width: 100%;
+
+	thead {
+		font-size: 1.2rem;
+		font-weight: bold;
+	}
+
+	tr {
+		@include flex(row, space-between, center);
+		border-radius: $border-radius-sm;
+	}
+
+	td {
+		padding: 0.5rem 0.7rem;
+	}
+
+	tbody {
+		tr:nth-of-type(odd) {
+			background-color: $accent-color;
+			color: #fff;
+		}
+	}
+}
