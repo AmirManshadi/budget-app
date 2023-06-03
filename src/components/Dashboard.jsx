@@ -8,8 +8,9 @@
 import Budget from "./Budget"
 import BudgetForm from "./BudgetForm"
 import ExpenseForm from "./ExpenseForm"
+import Table from "./Table"
 
-function Dashboard({ userName, budgets }) {
+function Dashboard({ userName, budgets, expenses }) {
 	return (
 		<div className="dashboard">
 			<h2>
@@ -26,6 +27,13 @@ function Dashboard({ userName, budgets }) {
 							return <Budget key={budget.id} budget={{ ...budget }} />
 					  })
 					: null}
+			</section>
+			<section id="expenses-section">
+				{expenses && expenses.length > 0 && (
+					<Table
+						expenses={expenses.sort((a, b) => b.createdAt - a.createdAt)}
+					/>
+				)}
 			</section>
 		</div>
 	)

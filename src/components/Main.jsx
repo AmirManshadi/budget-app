@@ -21,7 +21,8 @@ import {
 export function MainLoader() {
 	const userName = fetchData("userName")
 	const budgets = fetchData("budgets")
-	return { userName, budgets }
+	const expenses = fetchData("expenses")
+	return { userName, budgets, expenses }
 }
 
 // action
@@ -50,7 +51,7 @@ export async function MainAction({ request }) {
 			createExpense({
 				name: data.newExpenseName,
 				amount: data.newExpenseAmount,
-        budgetID: data.budget
+				budgetID: data.budget,
 			})
 			toaster("success", "Expense created")
 			break
@@ -61,14 +62,18 @@ export async function MainAction({ request }) {
 }
 
 function Main() {
-	const { userName, budgets } = useLoaderData()
+	const { userName, budgets, expenses } = useLoaderData()
 
 	return (
 		<>
 			<Navbar userName={userName} />
 			<main>
 				{userName ? (
-					<Dashboard userName={userName} budgets={JSON.parse(budgets)} />
+					<Dashboard
+						userName={userName}
+						budgets={JSON.parse(budgets)}
+						expenses={JSON.parse(expenses)}
+					/>
 				) : (
 					<LoginForm />
 				)}
