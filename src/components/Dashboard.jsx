@@ -2,7 +2,7 @@
 // import { useEffect, useRef } from "react"
 
 // rrd import
-// import { useFetcher } from "react-router-dom"
+import { Link } from "react-router-dom"
 
 // components
 import Budget from "./Budget"
@@ -29,10 +29,16 @@ function Dashboard({ userName, budgets, expenses }) {
 					: null}
 			</section>
 			<section id="expenses-section">
+				<h2>Recent Expenses</h2>
 				{expenses && expenses.length > 0 && (
 					<Table
-						expenses={expenses.sort((a, b) => b.createdAt - a.createdAt)}
+						expenses={expenses
+							.sort((a, b) => b.createdAt - a.createdAt)
+							.slice(0, 8)}
 					/>
+				)}
+				{expenses && expenses.length > 8 && (
+					<Link to="expenses">Show All Expenses</Link>
 				)}
 			</section>
 		</div>

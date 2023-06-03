@@ -7,7 +7,6 @@ import {
 function Table({ expenses }) {
 	return (
 		<>
-			<h2>Recent Expenses</h2>
 			<table className="expenses-table">
 				<thead>
 					<tr>
