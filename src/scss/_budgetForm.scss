@@ -1,11 +1,12 @@
-.new-budget-form, .new-expense-form {
+.new-budget-form,
+.new-expense-form {
 	border: $border-dashed-md;
 	border-radius: $border-radius-lg;
 	padding: 1rem;
 
 	h3 {
 		font-size: $font-size-md;
-		color: $accent-color;
+		color: $dark-color;
 		text-align: center;
 		text-transform: capitalize;
 		margin: 0 0 1rem;
@@ -30,10 +31,10 @@
 		}
 		button {
 			@include flex(row, center, center, 0.5rem);
-			@extend %btn-accent;
+			@extend %btn-dark;
 
 			&:hover {
-				background-color: $accent-color-hover;
+				background-color: $dark-color-hover;
 			}
 			&:disabled {
 				background-color: $disabled-color;
