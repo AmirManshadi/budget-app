@@ -1,6 +1,3 @@
-/* eslint-disable no-mixed-spaces-and-tabs */
-/* eslint-disable react/jsx-key */
-/* eslint-disable react/prop-types */
 // react import
 // import { useEffect, useRef } from "react"
 

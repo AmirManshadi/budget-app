@@ -5,7 +5,6 @@ import {
 	getExpenseOfBudget,
 } from "../utils/helperFunctions"
 
-/* eslint-disable react/prop-types */
 export default function Budget({ budget }) {
 	const { name, id, amount } = budget
 	const spentAmount = getExpenseOfBudget(id)

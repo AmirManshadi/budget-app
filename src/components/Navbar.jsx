@@ -24,7 +24,6 @@ export async function NavbarLogoutAction() {
 	return redirect("/")
 }
 
-// eslint-disable-next-line react/prop-types
 function Navbar({ userName }) {
 	return (
 		<nav id="navbar">

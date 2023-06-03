@@ -5,7 +5,6 @@ import { useEffect, useRef } from "react"
 // rrd imports
 import { useFetcher } from "react-router-dom"
 
-/* eslint-disable react/prop-types */
 export default function ExpenseForm({ budgets }) {
 	const fetcher = useFetcher()
 	const isSubmitting = fetcher.state === "submitting"
