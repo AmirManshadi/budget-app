@@ -5,7 +5,11 @@ import { Link, useFetcher } from "react-router-dom"
 import { TrashIcon } from "@heroicons/react/24/outline"
 
 // helper functions
-import { /* deleteExpense, */ toaster, waait } from "../utils/helperFunctions"
+import {
+	/* deleteExpense, */ findBudget,
+	toaster,
+	waait,
+} from "../utils/helperFunctions"
 
 // action
 export async function ExpenseAction({ request }) {
@@ -25,7 +29,7 @@ export async function ExpenseAction({ request }) {
 	return null
 }
 
-export default function Expense({ name, amount, date, id }) {
+export default function Expense({ name, amount, date, id, budgetId }) {
 	const fetcher = useFetcher()
 
 	return (
@@ -34,7 +38,7 @@ export default function Expense({ name, amount, date, id }) {
 			<td className="expense-amount">{amount}</td>
 			<td className="expense-date">{date}</td>
 			<td className="expense-budget">
-				<Link to=""></Link>
+				<Link to="">{findBudget(budgetId)}</Link>
 			</td>
 			<td className="expense-delete">
 				<fetcher.Form method="post">

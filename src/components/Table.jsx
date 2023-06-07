@@ -23,7 +23,8 @@ function Table({ expenses }) {
 								name={expense.name}
 								amount={formatCurrency(expense.amount)}
 								date={formatDateToLocaleString(expense.createdAt)}
-                id={expense.id}
+								id={expense.id}
+								budgetId={expense.budgetId}
 							/>
 						</tr>
 					))}
