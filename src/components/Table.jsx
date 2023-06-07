@@ -3,6 +3,7 @@ import {
 	formatCurrency,
 	formatDateToLocaleString,
 } from "../utils/helperFunctions"
+import Expense from "./Expense"
 
 function Table({ expenses }) {
 	return (
@@ -10,7 +11,7 @@ function Table({ expenses }) {
 			<table className="expenses-table">
 				<thead>
 					<tr>
-						{["name", "amount", "date"].map((item, index) => (
+						{["name", "amount", "date", "budget", ""].map((item, index) => (
 							<td key={index}>{item}</td>
 						))}
 					</tr>
@@ -18,13 +19,12 @@ function Table({ expenses }) {
 				<tbody>
 					{expenses.map(expense => (
 						<tr key={expense.id}>
-							<td className="expense-name">{expense.name}</td>
-							<td className="expense-amount">
-								{formatCurrency(expense.amount)}
-							</td>
-							<td className="expense-date">
-								{formatDateToLocaleString(expense.createdAt)}
-							</td>
+							<Expense
+								name={expense.name}
+								amount={formatCurrency(expense.amount)}
+								date={formatDateToLocaleString(expense.createdAt)}
+                id={expense.id}
+							/>
 						</tr>
 					))}
 				</tbody>

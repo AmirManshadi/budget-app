@@ -15,6 +15,7 @@ import Dashboard, {
 	DashboardLoader,
 } from "./components/Dashboard"
 import Expenses, { ExpensesLoader } from "./components/Expenses"
+import { ExpenseAction } from "./components/Expense"
 
 const router = createBrowserRouter([
 	{
@@ -37,6 +38,7 @@ const router = createBrowserRouter([
 				path: "expenses",
 				element: <Expenses />,
 				loader: ExpensesLoader,
+        action: ExpenseAction,
 			},
 		],
 	},

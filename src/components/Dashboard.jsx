@@ -2,6 +2,7 @@ import { useLoaderData } from "react-router-dom"
 import {
 	createBudget,
 	createExpense,
+	// deleteExpense,
 	fetchData,
 	toaster,
 	waait,
@@ -47,6 +48,13 @@ export async function DashboardAction({ request }) {
 			})
 			toaster("success", "Expense created")
 			break
+
+		// delete expense
+		case "deleteExpense":
+			// deleteExpense(data.expenseId)
+			// toaster("success", "Expense deleted")
+			break
+
 		default:
 			break
 	}
