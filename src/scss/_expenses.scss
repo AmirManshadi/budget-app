@@ -35,6 +35,12 @@
 		place-items: center;
 	}
 
+	.expense-budget {
+		a {
+			@extend %btn-shadow;
+		}
+	}
+
 	.expense-delete {
 		color: #000;
 
@@ -52,6 +58,12 @@
 
 			.expense-delete {
 				color: #fff;
+			}
+			.expense-budget {
+				a {
+					color: #fff;
+					border-color: #fff;
+				}
 			}
 		}
 	}
