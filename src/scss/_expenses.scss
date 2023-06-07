@@ -13,6 +13,7 @@
 
 .expenses-table {
 	border-collapse: collapse;
+	font-size: $font-size-sm;
 	width: 100%;
 
 	thead {
@@ -21,12 +22,17 @@
 	}
 
 	tr {
-		@include flex(row, space-between, center);
+		display: flex;
+		justify-content: space-around;
+		align-items: center;
 		border-radius: $border-radius-sm;
 	}
 
 	td {
 		padding: 0.5rem 0.7rem;
+		flex-basis: 20%;
+		display: grid;
+		place-items: center;
 	}
 
 	.expense-delete {
@@ -34,6 +40,8 @@
 
 		button {
 			background: none;
+			display: grid;
+			place-items: center;
 		}
 	}
 
