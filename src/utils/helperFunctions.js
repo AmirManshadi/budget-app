@@ -16,6 +16,11 @@ export function deleteData(key) {
 	return localStorage.removeItem(key)
 }
 
+// find budget of expense
+export function findBudget(id) {
+	return fetchData("budgets").filter(b => b.id === id)[0].name
+}
+
 // add new budget to existing budgets in local storage
 export function createBudget({ name, amount }) {
 	const newBudget = {
@@ -38,7 +43,7 @@ export function createExpense({ name, amount, budgetID }) {
 		name: name,
 		amount: +amount,
 		createdAt: Date.now(),
-		budgetID: budgetID,
+		budgetId: budgetID,
 	}
 	const existingExpenses = fetchData("expenses") ?? []
 	return localStorage.setItem(
