@@ -8,7 +8,7 @@ export function waait() {
 
 // fetch from local storage
 export function fetchData(key) {
-	return localStorage.getItem(key)
+	return JSON.parse(localStorage.getItem(key))
 }
 
 // remove from local storage
@@ -24,10 +24,10 @@ export function createBudget({ name, amount }) {
 		amount: +amount,
 		createdAt: Date.now(),
 	}
-	const existingBudgets = fetchData("budgets") ?? "[]"
+	const existingBudgets = fetchData("budgets") ?? []
 	return localStorage.setItem(
 		"budgets",
-		JSON.stringify([...JSON.parse(existingBudgets), newBudget])
+		JSON.stringify([...existingBudgets, newBudget])
 	)
 }
 
@@ -40,10 +40,10 @@ export function createExpense({ name, amount, budgetID }) {
 		createdAt: Date.now(),
 		budgetID: budgetID,
 	}
-	const existingExpenses = fetchData("expenses") ?? "[]"
+	const existingExpenses = fetchData("expenses") ?? []
 	return localStorage.setItem(
 		"expenses",
-		JSON.stringify([...JSON.parse(existingExpenses), newExpense])
+		JSON.stringify([...existingExpenses, newExpense])
 	)
 }
 
@@ -83,9 +83,7 @@ export function formatDateToLocaleString(epoch) {
 
 // getting total spent
 export function getExpenseOfBudget(id) {
-	const expenses = (
-		"expenses" in localStorage ? JSON.parse(fetchData("expenses")) : []
-	)
+	const expenses = ("expenses" in localStorage ? fetchData("expenses") : [])
 		.filter(exp => exp.budgetID === id)
 		.map(exp => exp.amount)
 	return expenses.length > 0

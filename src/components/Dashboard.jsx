@@ -26,7 +26,7 @@ export async function DashboardAction({ request }) {
 	switch (_action) {
 		// create user
 		case "newUser":
-			localStorage.setItem("userName", data.userName)
+			localStorage.setItem("userName", JSON.stringify(data.userName))
 			toaster("success", `Hello ${data.userName}`)
 			break
 
@@ -69,8 +69,8 @@ function Dashboard() {
 			{userName ? (
 				<Intro
 					userName={userName}
-					budgets={JSON.parse(budgets)}
-					expenses={JSON.parse(expenses)}
+					budgets={budgets}
+					expenses={expenses}
 				/>
 			) : (
 				<LoginForm />

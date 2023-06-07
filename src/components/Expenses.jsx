@@ -17,9 +17,9 @@ export default function Expenses() {
 	return (
 		<div>
 			<h2>
-				Your Expenses <small>({JSON.parse(expenses).length} total)</small>
+				Your Expenses <small>({expenses.length} total)</small>
 			</h2>
-			<Table expenses={JSON.parse(expenses)} />
+			<Table expenses={expenses} />
 		</div>
 	)
 }
