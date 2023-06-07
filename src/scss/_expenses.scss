@@ -29,10 +29,22 @@
 		padding: 0.5rem 0.7rem;
 	}
 
+	.expense-delete {
+		color: #000;
+
+		button {
+			background: none;
+		}
+	}
+
 	tbody {
 		tr:nth-of-type(odd) {
 			background-color: $accent-color;
 			color: #fff;
+
+			.expense-delete {
+				color: #fff;
+			}
 		}
 	}
 }
