@@ -6,7 +6,7 @@ export function waait() {
 	return new Promise(res => setTimeout(res, Math.random() * 1000))
 }
 
-// add to local storage
+// fetch from local storage
 export function fetchData(key) {
 	return localStorage.getItem(key)
 }
