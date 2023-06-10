@@ -24,7 +24,7 @@ function Intro({ userName, budgets, expenses }) {
 			<section id="budgets-section">
 				{budgets?.length > 0
 					? budgets.map(budget => {
-							return <Budget key={budget.id} budget={{ ...budget }} />
+							return <Budget key={budget.id} budget={ budget } />
 					  })
 					: null}
 			</section>

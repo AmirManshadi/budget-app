@@ -88,10 +88,11 @@ export function formatDateToLocaleString(epoch) {
 
 // getting total spent
 export function getExpenseOfBudget(id) {
-	const expenses = ("expenses" in localStorage ? fetchData("expenses") : [])
-		.filter(exp => exp.budgetID === id)
-		.map(exp => exp.amount)
-	return expenses.length > 0
-		? expenses.reduce((acc, amount) => acc + amount, 0)
-		: 0
+	return ("expenses" in localStorage ? fetchData("expenses") : [])
+  .filter(exp => exp.budgetId === id)
+  .map(exp => exp.amount)
+  .reduce((acc, amount) => acc + amount, 0)
+	// return expenses.length > 0
+	// 	? expenses.reduce((acc, amount) => acc + amount, 0)
+	// 	: 0
 }
