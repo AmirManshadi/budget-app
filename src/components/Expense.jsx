@@ -6,7 +6,8 @@ import { TrashIcon } from "@heroicons/react/24/outline"
 
 // helper functions
 import {
-	/* deleteExpense, */ findBudget,
+	deleteExpense,
+	findBudget,
 	toaster,
 	waait,
 } from "../utils/helperFunctions"
@@ -19,7 +20,7 @@ export async function ExpenseAction({ request }) {
 	switch (_action) {
 		// delete expense
 		case "deleteExpense":
-			// deleteExpense(data.expenseId)
+			deleteExpense(data.expenseId)
 			toaster("success", "Expense deleted")
 			break
 
@@ -41,7 +42,7 @@ export default function Expense({ name, amount, date, id, budgetId }) {
 				<Link to="">{findBudget(budgetId)}</Link>
 			</td>
 			<td className="expense-delete">
-				<fetcher.Form method="post">
+				<fetcher.Form method="post" action="/expenses">
 					<input type="hidden" name="_action" value="deleteExpense" />
 					<input type="hidden" name="expenseId" value={id} />
 					<button>

@@ -16,6 +16,13 @@ export function deleteData(key) {
 	return localStorage.removeItem(key)
 }
 
+// delete expense
+export function deleteExpense(id) {
+	const existingExpenses = fetchData("expenses") ?? []
+	const newExpenses = existingExpenses.filter(exp => exp.id !== id)
+	return localStorage.setItem("expenses", JSON.stringify(newExpenses))
+}
+
 // find budget of expense
 export function findBudget(id) {
 	return fetchData("budgets").filter(b => b.id === id)[0].name
@@ -89,9 +96,9 @@ export function formatDateToLocaleString(epoch) {
 // getting total spent
 export function getExpenseOfBudget(id) {
 	return ("expenses" in localStorage ? fetchData("expenses") : [])
-  .filter(exp => exp.budgetId === id)
-  .map(exp => exp.amount)
-  .reduce((acc, amount) => acc + amount, 0)
+		.filter(exp => exp.budgetId === id)
+		.map(exp => exp.amount)
+		.reduce((acc, amount) => acc + amount, 0)
 	// return expenses.length > 0
 	// 	? expenses.reduce((acc, amount) => acc + amount, 0)
 	// 	: 0
