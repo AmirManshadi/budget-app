@@ -16,10 +16,16 @@ export default function Expenses() {
 	const { expenses } = useLoaderData()
 	return (
 		<div>
-			<h2>
-				Your Expenses <small>({expenses.length} total)</small>
-			</h2>
-			<Table expenses={expenses} />
+			{expenses.length > 0 ? (
+				<>
+					<h2>
+						Your Expenses <small>({expenses.length} total)</small>
+					</h2>
+					<Table expenses={expenses} />
+				</>
+			) : (
+				<h2>No expenses exist</h2>
+			)}
 		</div>
 	)
 }
