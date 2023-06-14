@@ -18,7 +18,7 @@ function BudgetPage() {
 			<ExpenseForm budgets={[budget]} key={budgetId} />
 			{expenses && expenses.length > 0 && (
 				<div>
-					<h2>List of Expenses</h2>
+					<h2 style={{margin: "1rem 0"}}>List of Expenses</h2>
 					<Table expenses={expenses} showBudget={false} />
 				</div>
 			)}
