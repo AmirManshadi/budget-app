@@ -5,15 +5,15 @@ import {
 } from "../utils/helperFunctions"
 import Expense from "./Expense"
 
-function Table({ expenses }) {
+function Table({ expenses, showBudget = true }) {
 	return (
 		<>
 			<table className="expenses-table">
 				<thead>
 					<tr>
-						{["name", "amount", "date", "budget", ""].map((item, index) => (
-							<td key={index}>{item}</td>
-						))}
+						{["name", "amount", "date", showBudget ? "budget" : null, " "].map(
+							(item, index) => (item ? <td key={index}>{item}</td> : null)
+						)}
 					</tr>
 				</thead>
 				<tbody>
@@ -25,6 +25,7 @@ function Table({ expenses }) {
 								date={formatDateToLocaleString(expense.createdAt)}
 								id={expense.id}
 								budgetId={expense.budgetId}
+								showBudget={showBudget}
 							/>
 						</tr>
 					))}

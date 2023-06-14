@@ -30,7 +30,14 @@ export async function ExpenseAction({ request }) {
 	return null
 }
 
-export default function Expense({ name, amount, date, id, budgetId }) {
+export default function Expense({
+	name,
+	amount,
+	date,
+	id,
+	budgetId,
+	showBudget = true,
+}) {
 	const fetcher = useFetcher()
 
 	return (
@@ -38,9 +45,11 @@ export default function Expense({ name, amount, date, id, budgetId }) {
 			<td className="expense-name">{name}</td>
 			<td className="expense-amount">{amount}</td>
 			<td className="expense-date">{date}</td>
-			<td className="expense-budget">
-				<Link to={"/budget/" + budgetId}>{findBudget(budgetId).name}</Link>
-			</td>
+			{showBudget && (
+				<td className="expense-budget">
+					<Link to={"/budget/" + budgetId}>{findBudget(budgetId).name}</Link>
+				</td>
+			)}
 			<td className="expense-delete">
 				<fetcher.Form method="post" action="/expenses">
 					<input type="hidden" name="_action" value="deleteExpense" />
