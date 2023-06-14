@@ -28,6 +28,11 @@ export function findBudget(id) {
 	return fetchData("budgets").filter(b => b.id === id)[0].name
 }
 
+// find expenses of budget
+export function getExpensesOfBudget(id) {
+	return fetchData("expenses").filter(exp => exp.budgetId === id)
+}
+
 // add new budget to existing budgets in local storage
 export function createBudget({ name, amount }) {
 	const newBudget = {
