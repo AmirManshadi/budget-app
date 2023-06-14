@@ -16,7 +16,10 @@ import Dashboard, {
 } from "./components/Dashboard"
 import Expenses, { ExpensesLoader } from "./components/Expenses"
 import { ExpenseAction } from "./components/Expense"
-import BudgetPage, { BudgetPageAction, BudgetPageLoader } from "./components/BudgetPage"
+import BudgetPage, {
+	BudgetPageAction,
+	BudgetPageLoader,
+} from "./components/BudgetPage"
 
 const router = createBrowserRouter([
 	{

@@ -10,7 +10,7 @@
 	border-color: $accent-color;
 	border-radius: $border-radius-md;
 	padding: 1rem;
-  margin: 2rem 0;
+	margin: 2rem 0;
 
 	.budget-info {
 		@include flex(row, space-between, center);

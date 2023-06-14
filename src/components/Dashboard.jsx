@@ -61,11 +61,7 @@ function Dashboard() {
 	return (
 		<>
 			{userName ? (
-				<Intro
-					userName={userName}
-					budgets={budgets}
-					expenses={expenses}
-				/>
+				<Intro userName={userName} budgets={budgets} expenses={expenses} />
 			) : (
 				<LoginForm />
 			)}

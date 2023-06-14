@@ -1,5 +1,11 @@
 import { useLoaderData } from "react-router-dom"
-import { createExpense, findBudget, getExpensesOfBudget, toaster, waait } from "../utils/helperFunctions"
+import {
+	createExpense,
+	findBudget,
+	getExpensesOfBudget,
+	toaster,
+	waait,
+} from "../utils/helperFunctions"
 import Budget from "./Budget"
 import ExpenseForm from "./ExpenseForm"
 import Table from "./Table"
@@ -31,17 +37,16 @@ export async function BudgetPageAction({ request }) {
 	return null
 }
 
-
 function BudgetPage() {
 	const { budget, budgetId, expenses } = useLoaderData()
 	return (
 		<>
-      <h2>{budget.name}</h2>
+			<h2>{budget.name}</h2>
 			<Budget budget={budget} />
 			<ExpenseForm budgets={[budget]} key={budgetId} />
 			{expenses && expenses.length > 0 && (
 				<div>
-					<h2 style={{margin: "1rem 0"}}>List of Expenses</h2>
+					<h2 style={{ margin: "1rem 0" }}>List of Expenses</h2>
 					<Table expenses={expenses} showBudget={false} />
 				</div>
 			)}
