@@ -36,11 +36,31 @@
 		}
 	}
 
-	& div:last-child {
+	& div {
 		@include flex(row, space-between, center);
 
 		small {
 			font-weight: bold;
+		}
+	}
+
+	.delete-view-budget {
+		margin: 1rem 0 0;
+		text-align: center;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		button {
+			@extend %btn-accent;
+			&:hover {
+				background-color: $accent-color-hover;
+			}
+		}
+		a {
+			@extend %btn-accent;
+			&:hover {
+				background-color: $accent-color-hover;
+			}
 		}
 	}
 }

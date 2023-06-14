@@ -36,7 +36,7 @@ export default function Budget({ budget, func = "view" }) {
 						<input type="hidden" name="budgetId" value={id} />
 						<button>
 							<span>delete budget</span>
-							<TrashIcon />
+							<TrashIcon width={20}/>
 						</button>
 					</Form>
 				) : (
