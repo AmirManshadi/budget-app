@@ -39,7 +39,8 @@ export default function Expense({
 	showBudget = true,
 }) {
 	const fetcher = useFetcher()
-
+	const budget = findBudget(budgetId)
+	console.log(`🚀 ~ budget:`, budget)
 	return (
 		<>
 			<td className="expense-name">{name}</td>
@@ -47,7 +48,7 @@ export default function Expense({
 			<td className="expense-date">{date}</td>
 			{showBudget && (
 				<td className="expense-budget">
-					<Link to={"/budget/" + budgetId}>{findBudget(budgetId).name}</Link>
+					<Link to={"/budget/" + budgetId}>{budget.name}</Link>
 				</td>
 			)}
 			<td className="expense-delete">

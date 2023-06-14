@@ -1,10 +1,10 @@
 import { useLoaderData } from "react-router-dom"
 import {
 	createExpense,
+	deleteBudget,
 	findBudget,
 	getExpensesOfBudget,
 	toaster,
-	waait,
 } from "../utils/helperFunctions"
 import Budget from "./Budget"
 import ExpenseForm from "./ExpenseForm"
@@ -17,7 +17,6 @@ export function BudgetPageLoader({ params }) {
 }
 
 export async function BudgetPageAction({ request }) {
-	await waait()
 	const formData = await request.formData()
 	const { _action, ...data } = Object.fromEntries(formData)
 	switch (_action) {
@@ -31,6 +30,12 @@ export async function BudgetPageAction({ request }) {
 			toaster("success", "Expense created")
 			break
 
+		case "deleteBudget":
+			window.location.assign("/")
+			deleteBudget(data.budgetId)
+			toaster("success", "Budget Deleted")
+			break
+
 		default:
 			break
 	}
@@ -42,7 +47,7 @@ function BudgetPage() {
 	return (
 		<>
 			<h2>{budget.name}</h2>
-			<Budget budget={budget} />
+			<Budget budget={budget} func="delete" />
 			<ExpenseForm budgets={[budget]} key={budgetId} />
 			{expenses && expenses.length > 0 && (
 				<div>

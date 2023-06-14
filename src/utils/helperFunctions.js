@@ -23,6 +23,17 @@ export function deleteExpense(id) {
 	return localStorage.setItem("expenses", JSON.stringify(newExpenses))
 }
 
+// delete budget
+export function deleteBudget(id) {
+	const existingExpenses = fetchData("expenses") ?? []
+	const newExpenses = existingExpenses.filter(exp => exp.budgetId !== id)
+	localStorage.setItem("expenses", JSON.stringify(newExpenses))
+	const existingBudgets = fetchData("budgets") ?? []
+	const newBudgets = existingBudgets.filter(b => b.id !== id)
+	localStorage.setItem("budgets", JSON.stringify(newBudgets))
+	return
+}
+
 // find budget of expense
 export function findBudget(id) {
 	return fetchData("budgets").filter(b => b.id === id)[0]
