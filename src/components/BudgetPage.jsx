@@ -1,5 +1,5 @@
 import { useLoaderData } from "react-router-dom"
-import { findBudget, getExpensesOfBudget } from "../utils/helperFunctions"
+import { createExpense, findBudget, getExpensesOfBudget, toaster, waait } from "../utils/helperFunctions"
 import Budget from "./Budget"
 import ExpenseForm from "./ExpenseForm"
 import Table from "./Table"
@@ -9,6 +9,28 @@ export function BudgetPageLoader({ params }) {
 	const expenses = getExpensesOfBudget(params.id)
 	return { budget, budgetId: params.id, expenses }
 }
+
+export async function BudgetPageAction({ request }) {
+	await waait()
+	const formData = await request.formData()
+	const { _action, ...data } = Object.fromEntries(formData)
+	switch (_action) {
+		// create new expense
+		case "newExpense":
+			createExpense({
+				name: data.newExpenseName,
+				amount: data.newExpenseAmount,
+				budgetID: data.budget,
+			})
+			toaster("success", "Expense created")
+			break
+
+		default:
+			break
+	}
+	return null
+}
+
 
 function BudgetPage() {
 	const { budget, budgetId, expenses } = useLoaderData()
