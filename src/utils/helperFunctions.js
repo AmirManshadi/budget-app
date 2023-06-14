@@ -25,7 +25,7 @@ export function deleteExpense(id) {
 
 // find budget of expense
 export function findBudget(id) {
-	return fetchData("budgets").filter(b => b.id === id)[0].name
+	return fetchData("budgets").filter(b => b.id === id)[0]
 }
 
 // find expenses of budget

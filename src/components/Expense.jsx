@@ -39,7 +39,7 @@ export default function Expense({ name, amount, date, id, budgetId }) {
 			<td className="expense-amount">{amount}</td>
 			<td className="expense-date">{date}</td>
 			<td className="expense-budget">
-				<Link to="">{findBudget(budgetId)}</Link>
+				<Link to={"/budget/" + budgetId}>{findBudget(budgetId).name}</Link>
 			</td>
 			<td className="expense-delete">
 				<fetcher.Form method="post" action="/expenses">
