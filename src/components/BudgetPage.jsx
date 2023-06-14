@@ -36,6 +36,7 @@ function BudgetPage() {
 	const { budget, budgetId, expenses } = useLoaderData()
 	return (
 		<>
+      <h2>{budget.name}</h2>
 			<Budget budget={budget} />
 			<ExpenseForm budgets={[budget]} key={budgetId} />
 			{expenses && expenses.length > 0 && (
